@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "React Course",
+    "price": 500,
+    "imgUrl": "./pictures/react.png"
+  },
+
+  {
+    "id": 2,
+    "name": "Next Course",
+    "price": 550,
+    "imgUrl": "/pictures/next.png"
+  },
+
+  {
+    "id": 3,
+    "name": "Express Course",
+    "price": 700,
+    "imgUrl": "/pictures/express.png"
+  },
+
+  {
+    "id": 4,
+    "name": "Docker",
+    "price": 800,
+    "imgUrl": "/pictures/docker.webp"
+  },
+
+  {
+    "id": 5,
+    "name": "GraphQL Course",
+    "price": 900,
+    "imgUrl": "/pictures/graphql.png"
+  },
+
+  {
+    "id": 6,
+    "name": "Rest API Course",
+    "price": 599,
+    "imgUrl": "/pictures/rest.png"
+  }
+]
