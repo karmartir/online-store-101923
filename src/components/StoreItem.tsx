@@ -8,10 +8,12 @@ type StoreItemProps = {
 }
 
 
-export function StoreItem({/*id, пока не используется*/ name, price, imgUrl}:StoreItemProps) {
-    return(
+export function StoreItem({/*id, пока не используется*/ name, price, imgUrl}: StoreItemProps) {
+    const quantity = 1;
+
+    return (
         /*todo Card*/
-        <Card style={{ width: '18rem', height: '350px', marginBottom: '15px' }}>
+        <Card className='h-100'/* style={{ width: '18rem', height: '350px', marginBottom: '15px' }}*/>
 
             <Card.Img variant="top" src={imgUrl} height='auto' style={{objectFit: 'cover'}}/>
 
@@ -22,9 +24,25 @@ export function StoreItem({/*id, пока не используется*/ name, 
                 </Card.Title>
 
 
+                <div className='mt-auto'>
+                    {/*разные интерфейсы*/}
 
-                {/*разные интерфейсы*/}
-                <Button variant="primary">Go somewhere</Button>
+                    {quantity === 0 ? (
+                    <Button className='w-100' variant="primary">+ Add to Cart</Button>
+                    ) : (
+                        <div className='d-flex align-items-center flex-column' style={{gap: '0.5rem'}}>
+                            <div className='d-flex align-items-center justify-content-center' style={{gap: '.5rem'}}>
+                                <Button> - </Button>
+                                <div>
+                                   <span>{quantity}</span> in cart
+                                </div>
+                                <Button>+</Button>
+                            </div>
+                            <Button variant='danger' size='sm'>Remove</Button>
+                        </div>
+                    )
+                    }
+                </div>
             </Card.Body>
         </Card>
     )
