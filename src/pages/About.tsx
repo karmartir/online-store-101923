@@ -1,5 +1,5 @@
 export function About () {
     return (
-        <div style={{color: "white"}}>About here</div>
+        <div style={{color: "white"}}>This is a About page</div>
     )
 }
