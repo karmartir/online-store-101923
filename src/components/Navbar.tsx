@@ -1,27 +1,58 @@
 import {Button, Container, Nav, Navbar as NavbarBs} from 'react-bootstrap'
 import {NavLink} from 'react-router-dom'
+import {useShoppingCart} from "../context/ShoppingCartContext.tsx";
+
 export function Navbar() {
+
+    const {openCart, cartQuantity} = useShoppingCart()
+
+    const cartLogo = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          className="bi bi-cart4" viewBox="0 0 16 16">
+        <path
+            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+    </svg>
+
     return (
         <NavbarBs sticky='top' className="bg-black shadow-sm mb-3">
             <Container>
-                <Nav className="me-auto bg-info">
-                    <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
-                    <Nav.Link to="/store" as={NavLink}>Store</Nav.Link>
-                    <Nav.Link to="/about" as={NavLink}>About</Nav.Link>
+
+                <Nav className="me-auto">
+                    <Nav.Link to="/" as={NavLink}>
+                        <span style={{color: 'rgba(248,183,90,0.68)'}}>Home</span>
+                    </Nav.Link>
+
+                    <Nav.Link to="/store" as={NavLink}>
+                        <span style={{color: 'rgba(248,183,90,0.68)'}}>Store</span>
+                    </Nav.Link>
+
+                    <Nav.Link to="/about" as={NavLink}>
+                        <span style={{color: 'rgba(248,183,90,0.68)'}}>About</span>About
+                    </Nav.Link>
                 </Nav>
 
                 {/*todo элемент корзины*/}
-                <Button className='rounded-circle' style={{width: '3rem', height: '3rem', position: 'relative'}} variant='info'>
-                {/*Todo функция открытия корзины*/}
-                    cart
-                    {/*Картинка svg корзины*/}
-                    <div className='rounded-circle bg-danger d-flex justify-content-center align-items-center'
-                    style={{color: "black", width: '1.5rem', height: '1.5rem', position: 'absolute', bottom: 0, right: 0, transform:'translate(35%, 35%)'}}
-                    >
-                        <small>1</small>
-                        {/*динамически cart quantity*/}
-                    </div>
-                </Button>
+
+                {cartQuantity > 0 && (
+                    <Button
+                        onClick={openCart}
+                        className='rounded-circle'
+                        style={{width: '3rem', height: '3rem', position: 'relative'}}
+                        variant='info'>
+                        {/*Todo функция открытия корзины*/}
+                        <span style={{color: 'black'}}>{cartLogo}</span>
+
+                        {/*Картинка svg корзины*/}
+                        <div className='rounded-circle bg-danger d-flex justify-content-center align-items-center'
+                             style={{
+                                 color: "black", width: '1.5rem', height: '1.5rem', position: 'absolute',
+                                 bottom: 0, right: 0, transform: 'translate(35%, 35%)'
+                             }}
+                        >
+                            {cartQuantity}
+                            {/*динамически cart quantity*/}
+                        </div>
+                    </Button>
+                )}
             </Container>
         </NavbarBs>
     )

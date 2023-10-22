@@ -39,5 +39,17 @@
     "name": "Rest API Course",
     "price": 599,
     "imgUrl": "/pictures/rest.png"
+  },
+  {
+    "id": 7,
+    "name": "UI/UX design",
+    "price": 799,
+    "imgUrl": "/pictures/ui.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Cyber Security",
+    "price": 845,
+    "imgUrl": "/pictures/cyber.webp"
   }
 ]
