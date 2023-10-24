@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "React Course",
+    "description": "React.js is a popular JavaScript library for building user interfaces with reusable components and efficient, declarative programming.",
     "price": 500,
     "imgUrl": "./pictures/react.png"
   },
@@ -9,13 +10,15 @@
   {
     "id": 2,
     "name": "Next Course",
+    "description": "React framework for server-rendered React applications with simple setup.",
     "price": 550,
     "imgUrl": "/pictures/next.png"
   },
 
   {
     "id": 3,
-    "name": "Express Course",
+    "name": "Express.js",
+    "description": "Minimalist Node.js framework for building web and API applications.",
     "price": 700,
     "imgUrl": "/pictures/express.png"
   },
@@ -23,6 +26,7 @@
   {
     "id": 4,
     "name": "Docker",
+    "description": "Platform for developing, shipping, and running applications in isolated containers.",
     "price": 800,
     "imgUrl": "/pictures/docker.webp"
   },
@@ -30,6 +34,7 @@
   {
     "id": 5,
     "name": "GraphQL Course",
+    "description": "Query language for APIs, enabling clients to request specific data structures from servers efficiently.",
     "price": 900,
     "imgUrl": "/pictures/graphql.png"
   },
@@ -37,18 +42,21 @@
   {
     "id": 6,
     "name": "Rest API Course",
+    "description":"Learn designing, developing, and testing RESTful APIs for web applications efficiently.",
     "price": 599,
     "imgUrl": "/pictures/rest.png"
   },
   {
     "id": 7,
     "name": "UI/UX design",
+    "description":"Enhancing user experience through intuitive interfaces, focusing on usability, accessibility, and aesthetics in applications.",
     "price": 799,
     "imgUrl": "/pictures/ui.jpg"
   },
   {
     "id": 8,
     "name": "Cyber Security",
+    "description":"Cyber Security safeguards digital systems, networks, and data from unauthorized access, ensuring data protection and privacy.",
     "price": 845,
     "imgUrl": "/pictures/cyber.webp"
   }

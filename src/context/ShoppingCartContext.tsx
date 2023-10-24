@@ -1,6 +1,8 @@
 import {createContext, ReactNode, useContext, useState} from "react";
 import ShoppingCart from "../components/ShoppingCart.tsx";
 import storeItemsJson from "../data/items.json";
+import {useLocalStorage} from "../hooks/useLocalStorage.ts";
+
 
 
 type ShoppingCartProviderProps = {
@@ -19,11 +21,20 @@ type ShoppingCartContext = {
     cartQuantity: number
     isOpen: boolean
     total: number
+    searchTerm: string
+    setSearchTerm: (term: string) => void
+    filteredItems: StoreItem[]
+    setFilteredItems: (items: StoreItem[]) => void
 }
 
 type CartItem = {
     id: number
     quantity: number
+}
+
+type StoreItem ={
+    id: number
+    name: string
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext)
@@ -37,7 +48,14 @@ export function ShoppingCartProvider({children}: ShoppingCartProviderProps) {
     const [isOpen, setIsOpen] = useState(false)
 
 
-    const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+        'shopping-cart',
+        []
+
+    )
+
+    const[searchTerm, setSearchTerm] = useState('')
+    const [filteredItems, setFilteredItems] = useState<StoreItem[]>(storeItemsJson)
 
     const cartQuantity = cartItems.reduce(
         (quantity, item) => item.quantity + quantity,
@@ -89,7 +107,7 @@ export function ShoppingCartProvider({children}: ShoppingCartProviderProps) {
         })
     }
 
-    const total = cartItems.reduce((total, cartItem) => {
+        const total =  cartItems.reduce((total, cartItem) => {
         const item = storeItemsJson.find(el =>
             el.id === cartItem.id)
         return total + (item?.price || 0) * cartItem.quantity
@@ -107,7 +125,11 @@ export function ShoppingCartProvider({children}: ShoppingCartProviderProps) {
                 closeCart,
                 cartQuantity,
                 isOpen,
-                total
+                total,
+                searchTerm,
+                setSearchTerm,
+                filteredItems,
+                setFilteredItems
             }}>
             {children}
             <ShoppingCart/>
